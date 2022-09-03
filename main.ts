@@ -1,22 +1,47 @@
 input.onLogoEvent(TouchButtonEvent.Pressed, function () {
-    haloDisplay.showRainbow(1, 360)
     music.startMelody(music.builtInMelody(Melodies.Entertainer), MelodyOptions.Once)
-    haloDisplay.clear()
 })
+function incBpm () {
+    bpm += 10
+    music.setTempo(bpm)
+    showBpm()
+}
 input.onButtonPressed(Button.A, function () {
-    music.changeTempoBy(-10)
-    basic.showNumber(music.tempo())
+    decBpm()
 })
+function decBpm () {
+    bpm += -10
+    music.setTempo(bpm)
+    showBpm()
+}
 input.onButtonPressed(Button.AB, function () {
-    basic.showNumber(music.tempo())
+    basic.showNumber(bpm)
+    haloDisplay.clear()
+    haloDisplay.show()
+    music.stopAllSounds()
 })
 input.onButtonPressed(Button.B, function () {
-    music.changeTempoBy(10)
-    basic.showNumber(music.tempo())
+    incBpm()
 })
+function showBpm () {
+    haloDisplay.clear()
+    ledsCount = Math.abs((120 - bpm) / 10)
+    if (bpm >= 120) {
+        haloDisplay.range(0, ledsCount).showColor(kitronik_halo_hd.colors(ZipLedColors.Indigo))
+    } else {
+        haloDisplay.range(59 - ledsCount, ledsCount).showColor(kitronik_halo_hd.colors(ZipLedColors.Indigo))
+    }
+    basic.showNumber(bpm)
+}
+let ledsCount = 0
+let bpm = 0
 let haloDisplay: kitronik_halo_hd.ZIPHaloHd = null
 haloDisplay = kitronik_halo_hd.createZIPHaloDisplay(60)
+bpm = 120
+haloDisplay.showRainbow(1, 360)
+kitronik_halo_hd.setBuzzerPin()
 haloDisplay.setBrightness(101)
+haloDisplay.show()
 basic.forever(function () {
     basic.showLeds(`
         . . . . .
