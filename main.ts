@@ -5,6 +5,7 @@ function incBpm () {
     bpm += 10
     music.setTempo(bpm)
     showBpm()
+    music.playSoundEffect(music.createSoundEffect(WaveShape.Noise, 500, 1, 255, 0, 10, SoundExpressionEffect.None, InterpolationCurve.Linear), SoundExpressionPlayMode.InBackground)
 }
 input.onButtonPressed(Button.A, function () {
     decBpm()
@@ -13,6 +14,7 @@ function decBpm () {
     bpm += -10
     music.setTempo(bpm)
     showBpm()
+    music.playSoundEffect(music.createSoundEffect(WaveShape.Noise, 500, 1, 255, 0, 10, SoundExpressionEffect.None, InterpolationCurve.Linear), SoundExpressionPlayMode.InBackground)
 }
 input.onButtonPressed(Button.AB, function () {
     basic.showNumber(bpm)
@@ -29,9 +31,8 @@ function showBpm () {
     if (bpm >= 120) {
         haloDisplay.range(0, ledsCount).showColor(kitronik_halo_hd.colors(ZipLedColors.Indigo))
     } else {
-        haloDisplay.range(59 - ledsCount, ledsCount).showColor(kitronik_halo_hd.colors(ZipLedColors.Indigo))
+        haloDisplay.range(60 - ledsCount, ledsCount).showColor(kitronik_halo_hd.colors(ZipLedColors.Indigo))
     }
-    basic.showNumber(bpm)
 }
 let ledsCount = 0
 let bpm = 0
