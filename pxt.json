@@ -1,16 +1,19 @@
 {
-    "name": "heart",
+    "name": "bpm-change",
     "description": "",
     "dependencies": {
         "core": "*",
         "radio": "*",
         "microphone": "*",
-        "pxt-kitronik-halohd": "github:kitronikltd/pxt-kitronik-halohd#v0.2.3"
+        "pxt-kitronik-halohd": "github:kitronikltd/pxt-kitronik-halohd#v0.2.3",
+        "microbit-pxt-timeanddate": "github:bsiever/microbit-pxt-timeanddate#v2.0.25",
+        "power": "github:microbit-foundation/pxt-microbit-v2-power#v0.2.3"
     },
     "files": [
         "main.blocks",
         "main.ts",
-        "README.md"
+        "README.md",
+        "main.py"
     ],
     "testFiles": [
         "test.ts"
