@@ -4,7 +4,8 @@
     "dependencies": {
         "core": "*",
         "radio": "*",
-        "microphone": "*"
+        "microphone": "*",
+        "pxt-kitronik-halohd": "github:kitronikltd/pxt-kitronik-halohd#v0.2.3"
     },
     "files": [
         "main.blocks",
